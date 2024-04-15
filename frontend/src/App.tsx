@@ -1,35 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Home } from "./home/home";
+import { AdminLogin } from "./admin/login/login";
+import { ViewOrganizations } from "./admin/viewOrganizations/viewOrganizations";
+import { ViewVolunteers } from "./admin/viewVolunteers/viewVolunteers";
+import { ViewTasks } from "./admin/viewTasks/viewTasks";
+import { OrganizationLogin } from "./organization/login/login";
+import { OrgTasks } from "./organization/tasks/tasks";
+import { VolunteerLogin } from "./volunteer/login/login";
+import { VolunteerTasks } from "./volunteer/tasks/tasks";
+import { Performance } from "./volunteer/performanceTracking/performance";
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/organizations" element={<ViewOrganizations />} />
+        <Route path="/admin/volunteers" element={<ViewVolunteers />} />
+        <Route path="/admin/tasks" element={<ViewTasks />} />
+        <Route path="/organization/login" element={<OrganizationLogin />} />
+        <Route path="/organization/tasks" element={<OrgTasks />} />
+        <Route path="/volunteer/login" element={<VolunteerLogin />} />
+        <Route path="/volunteer/tasks" element={<VolunteerTasks />} />
+        <Route path="/volunteer/performance" element={<Performance />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
